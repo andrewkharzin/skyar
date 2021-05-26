@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
-from flight.models import Flight
+from flight.models import *
+from uld.models import UldNumber
 
 
 @admin.register(Shipment)
@@ -21,5 +22,18 @@ class ShipmentAdmin(admin.ModelAdmin):
         'shc_code5',
         'handling',
         'inbound_flight',
+        'outbound_flight',
+        # 'outbound_flight',
+        'uld',
     ]
     search_fields = ['str_awb_number']
+
+
+# class UldNumberAdmin(admin.ModelAdmin):
+#     list_display = [
+#         'unit_type',
+#         'unit_number',
+#         'unit_owner'
+
+
+#     ]
