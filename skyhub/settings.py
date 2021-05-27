@@ -39,10 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hub',
-    'flight',
-    'uld',
-    'request',
+    'apps.users',
+    'apps.profiles',
+    'apps.agents',
+    'apps.api',
+    'apps.hub',
+    'apps.flight',
+    'apps.uld',
+    'apps.request',
 ]
 
 REST_FRAMEWORK = {
@@ -134,3 +138,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.User'

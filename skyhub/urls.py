@@ -6,9 +6,9 @@ from django.urls import path
 from django.urls.conf import include
 
 
-
 urlpatterns = [
     path('auth', obtain_auth_token),
-    path('hub/', include('hub.urls')),
+    path('hub/', include('apps.hub.urls')),
     path('admin/', admin.site.urls),
+    path('api/', include('apps.api.urls'))
 ]
