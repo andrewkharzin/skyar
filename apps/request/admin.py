@@ -17,8 +17,10 @@ class TrrAdmin(admin.ModelAdmin):
         'description',
         'standby',
         'is_completed',
+        'is_approved',
         # 'created_at',
         # 'updated_at',
+        'user',
 
     ]
     list_display_links = [

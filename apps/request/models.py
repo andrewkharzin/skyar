@@ -3,6 +3,7 @@ from apps.flight.models import *
 from apps.hub.models import *
 from apps.uld.models import *
 from datetime import datetime
+from apps.users.models import User
 
 
 class TrRequest(models.Model):
@@ -13,6 +14,7 @@ class TrRequest(models.Model):
         ('RCD', 'REJECTED'),
         ('CCD', 'CANCELED')
     )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     trr_date = models.DateTimeField(default='', blank=True)
     title = models.CharField(null=True, blank=True, max_length=55)
 
@@ -20,6 +22,7 @@ class TrRequest(models.Model):
         null=False, blank=False, default='NEW', max_length=36, choices=STATE_R_STATUS)
     is_completed = models.BooleanField(default=False)
     standby = models.BooleanField(default=True)
+    is_approved = models.BooleanField(default=False)
     trr_shipment = models.ForeignKey(
         Shipment, null=True, blank=True, on_delete=CASCADE, default='')
     units = models.ForeignKey(UldNumber, null=True,
@@ -29,6 +32,7 @@ class TrRequest(models.Model):
     trr_dep_flight = models.ForeignKey(
         DepFlight, null=True, blank=True, on_delete=CASCADE, default='')
     description = models.TextField(null=True, blank=True, default='')
+    # HIDEN DATETIME TRACKING
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
